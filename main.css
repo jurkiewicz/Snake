@@ -1,0 +1,21 @@
+body{
+	background: #161616;
+	margin: 0px;
+}
+#container{
+	width: 800px;
+	height: 450px;
+	background: #000000;
+}
+.apple{
+	width: 25px;
+	height: 25px;
+	background: #d50007;
+	position: absolute;
+}
+.snake{
+	width: 24px;
+	height: 24px;
+	background: #ffffff;
+	position: absolute;
+}
