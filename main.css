@@ -1,6 +1,8 @@
 body{
 	background: #161616;
 	margin: 0px;
+	color: #ffffff;
+	font-family: monospace;
 }
 #container{
 	width: 800px;
@@ -8,14 +10,59 @@ body{
 	background: #000000;
 }
 .apple{
-	width: 25px;
-	height: 25px;
+	width: 24px;
+	height: 24px;
 	background: #d50007;
 	position: absolute;
+	z-index: 0;
 }
 .snake{
 	width: 24px;
 	height: 24px;
 	background: #ffffff;
 	position: absolute;
+	z-index: 1;
+}
+#end{
+	width: 800px;
+	height: 105px;
+	text-align: center;
+	background: #000000;
+	visibility: hidden;
+	position: absolute;
+	font-size: 35px;
+	padding: 172.5px 0;
+	z-index: 2;
+}
+#menu{
+	width: 800px;
+	height: 105px;
+	text-align: center;
+	background: #000000;
+	visibility: visible;
+	position: absolute;
+	font-size: 35px;
+	z-index: 2;
+}
+button{
+	width: 100px;
+	height: 40px;
+	left: 350px;
+	text-align: center;
+	background: #202020;
+	position: absolute;
+	font-size: 20px;
+	color: #bbbbbb;
+	border: none;
+	margin: 2px;
+}
+button:hover{
+	background: #bbbbbb;
+	color: #202020;
+}
+#start{
+	width: 200px;
+	height: 50px;
+	left: 300px;
+	visibility: hidden;
 }
