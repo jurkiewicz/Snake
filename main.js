@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 	var container = document.getElementById('container');
 	var key = [];
-	var direction = 0;
+	var direction = -1;
 	var snake = [];
 	var s = 0;
 	var last = 2;
@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function(){
 	var appleX, appleY;
 	var apple;
 	var canChange = true;
+	var scale = 25;
 
 	onkeydown = onkeyup = function (e){
         var e = e || event;
@@ -34,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function(){
 		y = 250;
 		for (var i = 0; i < 3; i++) {
 			snakePart(x, y);
-			x += 25;
+			x += scale;
 		}
     }
 
@@ -53,8 +54,8 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
 	function makeApple(){
-		appleX = 25 * Math.floor(Math.random() * 32);
-		appleY = 25 * Math.floor(Math.random() * 18);
+		appleX = scale * Math.floor(Math.random() * 32);
+		appleY = scale * Math.floor(Math.random() * 18);
 		apple = document.createElement('div');
 		apple.className = 'apple';
 		apple.style.left = appleX + 'px';
@@ -70,11 +71,11 @@ document.addEventListener("DOMContentLoaded", function(){
 		var start = document.getElementById('start');
 
 		easy.addEventListener('click', function(){
-			speed = 500;
+			speed = 300;
 			start.style.visibility = 'visible';
 		});
 		medium.addEventListener('click', function(){
-			speed = 300;
+			speed = 200;
 			start.style.visibility = 'visible';
 		});
 		hard.addEventListener('click', function(){
@@ -85,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function(){
 		start.addEventListener('click', function(){
 			menu.style.visibility = 'hidden';
 			start.style.visibility = 'hidden';
-			initialSnake();
+			initialSnake();			
 			setInterval(move, speed);
 			steer = setInterval(steering, 50);
 			makeApple();
@@ -140,14 +141,16 @@ document.addEventListener("DOMContentLoaded", function(){
 	}
 
 	function move(){
-		// for (var i = 3; i < snake.length; i++) {
-		// 	if ((snake[0][0] === snake[i][0] + 25 && direction === 0) ||
-		// 	(snake[0][0] === snake[i][0] - 25 && direction === 2) ||
-		// 	(snake[0][1] === snake[i][1] + 25 && direction === 1) ||
-		// 	(snake[0][1] === snake[i][1] - 25 && direction === 3)) {
-		// 		gameOver();
-		// 	}
-		// }
+		for (var i = 2; i < 1000; i++) {
+			if (typeof snake[i] != 'undefined') {
+				if ((snake[0][0] === snake[i][0] + scale && snake[0][1] === snake[i][1] && direction === 0) ||
+				(snake[0][0] === snake[i][0] - scale && snake[0][1] === snake[i][1] && direction === 2) ||
+				(snake[0][1] === snake[i][1] + scale && snake[0][0] === snake[i][0] && direction === 1) ||
+				(snake[0][1] === snake[i][1] - scale && snake[0][0] === snake[i][0] && direction === 3)) {
+					gameOver();
+				}
+			}			
+		}
 		if ((snake[0][0] === 0 && direction === 0) ||
 			(snake[0][0] === 775 && direction === 2) ||
 			(snake[0][1] === 0 && direction === 1) ||
@@ -159,19 +162,19 @@ document.addEventListener("DOMContentLoaded", function(){
 			score += 10;
 			switch(direction){
 				case 0:
-					snakePart(snake[0][0] - 25, snake[0][1]);
+					snakePart(snake[0][0], snake[0][1]);
 	            break;
 
 	            case 1:
-	            	snakePart(snake[0][0], snake[0][1] - 25);
+	            	snakePart(snake[0][0], snake[0][1]);
 	            break;
 
 	            case 2:
-	            	snakePart(snake[0][0] + 25, snake[0][1]);
+	            	snakePart(snake[0][0], snake[0][1]);
 	            break;
 
 	            case 3:
-	            	snakePart(snake[0][0], snake[0][1] + 25);
+	            	snakePart(snake[0][0], snake[0][1]);
 	            break;
 			}
 			makeApple();
@@ -179,26 +182,26 @@ document.addEventListener("DOMContentLoaded", function(){
 		canChange = true;
 		switch(direction){
 			case 0:
-				x = snake[0][0] - 25;
+				x = snake[0][0] - scale;
 				y = snake[0][1];
 				changeSnake(x, y);
             break;
 
             case 1:
             	x = snake[0][0];
-				y = snake[0][1] - 25;
+				y = snake[0][1] - scale;
 				changeSnake(x, y);
             break;
 
             case 2:
-            	x = snake[0][0] + 25;
+            	x = snake[0][0] + scale;
 				y = snake[0][1];
 				changeSnake(x, y);
             break;
 
             case 3:
             	x = snake[0][0];
-				y = snake[0][1] + 25;
+				y = snake[0][1] + scale;
 				changeSnake(x, y);
             break;
 		}
