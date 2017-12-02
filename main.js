@@ -16,32 +16,32 @@ document.addEventListener("DOMContentLoaded", function(){
 
 	var mc = new Hammer(document);
 
-	mc.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+	mc.get('pan').set({ direction: Hammer.DIRECTION_ALL });
 
-	mc.on("swipeleft swiperight swipeup swipedown", function(ev) {
+	mc.on("panleft panright panup pandown", function(ev) {
 		switch(ev.type){
-			case 'swipeleft': // left
+			case 'panleft': // left
             	if (direction != 2 && canChange) {
             		direction = 0;
             		canChange = false;
             	}	                	
             break;
 
-            case 'swipeup': // up
+            case 'panup': // up
             	if (direction != 3 && canChange) {
             		direction = 1;
             		canChange = false;
             	}
             break;
 
-            case 'swiperight': // right
+            case 'panright': // right
                 if (direction != 0 && canChange) {
             		direction = 2;
             		canChange = false;
             	}
             break;
          
-            case 'swipedown': // down
+            case 'pandown': // down
             	if (direction != 1 && canChange) {
             		direction = 3;
             		canChange = false;

@@ -27,7 +27,7 @@ body{
 	width: 800px;
 	height: 105px;
 	text-align: center;
-	background: rgba(0, 0, 0, 0.5);
+	background: #000000;
 	visibility: hidden;
 	position: absolute;
 	font-size: 35px;
