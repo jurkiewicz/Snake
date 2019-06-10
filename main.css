@@ -10,6 +10,9 @@ body{
 	background: #000000;
 }
 .apple{
+	color: #fff;
+	text-align: center;
+	font-size: 18px;
 	width: 24px;
 	height: 24px;
 	background: #d50007;
@@ -22,6 +25,35 @@ body{
 	background: #ffffff;
 	position: absolute;
 	z-index: 1;
+}
+.good{
+	background: #84ff00;
+}
+.bad{
+	background: #f00;
+}
+#word{	
+	width: 200px;
+	height: 105px;
+	left: 805px;
+	top: 0px;
+	text-align: center;
+	background: #000000;
+	position: absolute;
+	font-size: 35px;
+	padding: 172.5px 0;
+	z-index: 2;
+}
+#score{	
+	width: 200px;
+	height: 20px;
+	left: 805px;
+	top: 16px;
+	text-align: center;
+	background: #000000;
+	position: absolute;
+	font-size: 35px;
+	z-index: 2;
 }
 #end{
 	width: 800px;
